@@ -6,6 +6,9 @@ main(int argc, char **argv)
 {
     FILE *in = fopen(argv[1], "r");
     FILE *out = fopen(argv[2], "w");
+	if (in == NULL || out == NULL) {
+		printf("fail to open input and/or output file(s)\n");
+	}
 
     if (strcmp(argv[3],"str") == 0) {
         fputc('{', out);
@@ -22,7 +25,7 @@ main(int argc, char **argv)
             fputc('\n', out);
         }
 
-        fputs("0x00, }", out);
+        fputs("0x00 }", out);
         fputc('\n', out);
     } else {
         printf("unknown mode : %s\n", argv[3]);
